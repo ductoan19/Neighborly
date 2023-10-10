@@ -1,6 +1,8 @@
 import azure.functions as func
 import pymongo
 import json
+from bson.json_util import dumps
+from bson.objectid import ObjectId
 import os
 
 
@@ -13,7 +15,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             url = os.environ["MONGO_DB"]
             client = pymongo.MongoClient(url)
             database = client['azure']
-            collection = database['advertisements']
+            collection = database['posts']
             collection.insert_one(json.loads(request))
 
             return func.HttpResponse(req.get_body())
@@ -24,6 +26,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     else:
         return func.HttpResponse(
-            "Please pass ads detail in the body",
+            "Please pass post detail in the body",
             status_code=400
         )

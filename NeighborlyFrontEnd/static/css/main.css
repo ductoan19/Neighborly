@@ -32,12 +32,20 @@ button.btn.btn-primary {
     border: 0px;
 }
 
-#add-ad-button, .btn-neighborly {
+.add-div {
+    padding: 3rem 0;
+}
+
+#add-ad-button.btn-neighborly {
+    background: #2fba97;
+    background-color: #2fba97;
+    color: #555;
+}
+
+#add-ad-button.btn-addPost {
     background: #FFDE40;
     background-color: #FFDE40;
     color: #555;
-    margin: 4rem 0;
-    width: 50%;
 }
 
 .panel {
@@ -55,7 +63,7 @@ button.btn.btn-primary {
 }
 
 img.img-small {
-    width:250px;
+    width: 250px;
 }
 
 @media (min-width: 992px) {
@@ -63,6 +71,7 @@ img.img-small {
         padding-left: 4rem;
         padding-right: 4rem;
     }
+
     .gedf-card {
         margin-bottom: 2.77rem;
     }
