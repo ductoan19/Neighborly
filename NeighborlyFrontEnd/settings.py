@@ -1,3 +1,5 @@
+import os
+
 # --------- Flask settings
 SERVER_HOST = '0.0.0.0'  # Update this for the appropriate front-end website when up
 SERVER_PORT = 5000
@@ -16,4 +18,7 @@ API_VERSION = 'v1'
 # API_URL = " https://neighborlyapi.azurewebsites.net/api/"
 
 # for local host if Azure functions served locally
-API_URL = "http://localhost:7071/api"
+API_URL = os.environ.get(
+    'API_URL') or "http://localhost:7071/api"
+APP_URL = os.environ.get(
+    'APP_URL') or 'https://neighborly-client-v1.azurewebsites.net/'

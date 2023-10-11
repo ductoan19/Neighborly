@@ -2,7 +2,7 @@ import logging.config
 import os
 from flask import Flask, Blueprint, request, jsonify, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
-from . import settings
+import settings
 import requests
 import json
 from feedgen.feed import FeedGenerator
@@ -45,7 +45,7 @@ def rss():
     fg = FeedGenerator()
     fg.title('Feed title')
     fg.description('Feed Description')
-    fg.link(href='https://neighborly-client-v1.azurewebsites.net/')
+    fg.link(href=settings.APP_URL)
 
     response = requests.get(settings.API_URL + '/getAdvertisements')
     ads = response.json()
@@ -68,9 +68,8 @@ def home():
     posts = response2.json()
     return render_template("index.html", ads=ads, posts=posts)
 
+
 # Ads CRUD
-
-
 @app.route('/ad/add', methods=['GET'])
 def add_ad_view():
     return render_template("new_ad.html")
